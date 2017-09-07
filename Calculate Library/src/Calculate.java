@@ -16,8 +16,8 @@ public class Calculate {
 	 * This method takes an integer and returns its cube.
 	 */
 	public static int cube(int operand) {
-		int cube = operand * operand * operand;
-		return cube;
+		int cubed = operand * operand * operand;
+		return cubed;
 	}
 
 	/*
@@ -40,15 +40,47 @@ public class Calculate {
 	 * This method converts an angle measure given in radians into degrees.
 	 */
 	public static double toDegrees(double operand) {
-		double toDegrees = (operand * (180 / 3.14159));
-		return toDegrees;
+		double deg = (operand * (180 / 3.14159));
+		return deg;
 	}
 
 	/*
-	 * toRadians
+	 * This method converts an angle measure given its degrees into radians
 	 */
 	public static double toRadians(double operand) {
-		double toRadians = (operand * (3.14159 / 180));
-		return toRadians;
+		double rad = (operand * (3.14159 / 180));
+		return rad;
+	}
+
+	/*
+	 *  This method provides coefficients of a quadratic equation in standard form
+	 *  returns the value of the discriminant
+	 */
+	public static double discriminant(double a, double b, double c) {
+		double discriminant = ((b * b) - 4 * a * c);
+		return discriminant;
+		
+	}
+	
+	/*
+	 * This method converts mixed numbers into an improper fraction.
+	 */
+	public static String toImproperFrac(int number, int numerator, int denominator) {
+		int mixedNumerator = (number * denominator + numerator);
+		return mixedNumerator + "/" + denominator;
+		
+	}
+	
+	public static String toMixedNum(int numerator, int denominator) {
+		int number = (numerator / denominator);
+		int newNumerator = (numerator % denominator);
+		return number + "_" + newNumerator + "/" + denominator;
+	}
+	
+	public static String foil(int w, int x, int y, int z, String variableName) {
+		int a = (w * y);
+		int b = ((w * z) + (x * y));
+		int c = (x * z);
+		return a + variableName + "^2" + "+" + b + variableName + "+" + c; 
 	}
 }
