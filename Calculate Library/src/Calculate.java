@@ -71,16 +71,98 @@ public class Calculate {
 		
 	}
 	
+	/*
+	 * This method converts an improper fraction to a mixed number.
+	 */
 	public static String toMixedNum(int numerator, int denominator) {
 		int number = (numerator / denominator);
 		int newNumerator = (numerator % denominator);
 		return number + "_" + newNumerator + "/" + denominator;
 	}
 	
+	/*
+	 * This method converts a binomial multiplication of the form (ax +
+	 * b)(cx + d) into a quadratic equation of the form ax^2 + bx + c.
+	 */
 	public static String foil(int w, int x, int y, int z, String variableName) {
 		int a = (w * y);
 		int b = ((w * z) + (x * y));
 		int c = (x * z);
 		return a + variableName + "^2" + "+" + b + variableName + "+" + c; 
 	}
+
+/*
+ * This method determines whether or not one integer is
+ * evenly divisible by another.
+ */
+public static Boolean isDivisibleBy(int operand1, int operand2) {
+	return operand1 % operand2 == 0;
+}
+
+/*
+ * This method returns the absolute value of the number passed.
+ */
+public static double absValue(double operand1) {
+	if (operand1 > 0) {
+		return operand1;
+	} else {
+		return operand1 * -1;
+	}
+}
+
+/*
+ * returns the absolute value of the number passed.
+ */
+public static double max(double operand1, double operand2) {
+	if (operand1 > operand2) {
+		return operand1;
+	} else { 
+		return operand2;
+	}
+}
+
+/*
+ * overloads max method.
+ */
+public static double max(double operand1, double operand2, double operand3) {
+	if (operand1 > operand2) {
+		if (operand3 > operand1) {
+			return operand3;
+		} else {
+			return operand1;
+		}
+	} else {
+		if (operand3 > operand2) {
+			return operand3;
+		} else {
+			return operand2;
+		}
+	}
+}
+
+/*
+ * returns the smaller of the values passed
+ */
+public static int min(int operand1, int operand2) {
+	if (operand1 > operand2) {
+		return operand2;
+	} else { 
+		return operand1;
+	}
+}
+
+/*
+ * rounds a double correctly to 2 decimal places and returns a double.
+ */
+public static double round2(double operand1) {
+	operand1 = operand1 * 1000;
+	if (operand1 % 10 < 5) {
+		operand1 = operand1 - (operand1 % 10);
+		return operand1 / 1000;
+	} else {
+		operand1 = operand1 - (operand1 % 10) + 10;
+		return operand1 / 1000;
+	}
+			
+}
 }
