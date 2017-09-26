@@ -217,10 +217,22 @@ public class Calculate {
 	 * two decimal places
 	 */
 	public static double sqrt(double x) {
+		if (x < 0) {
+			throw new IllegalArgumentException ()
+		}
 		double a = x / 2.0;
 		while (absValue(x - a * a) > .005) {
 			a = 0.5 * (x / a + a);
 		}
 		return round2(a);
+	}
+	
+	/*
+	 * uses the coefficients of a quadratic equation in standard form and uses
+	 * the quadratic formula to approximate the real roots, if any.
+	 */
+	public static String quadForm(int a, int b, int c) {
+		if (discriminant(a, b, c) < 0) {
+			
 	}
 }
