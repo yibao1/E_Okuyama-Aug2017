@@ -96,6 +96,9 @@ public class Calculate {
 	 * another.
 	 */
 	public static boolean isDivisibleBy(int operand1, int operand2) {
+		if (operand2 == 0) {
+			throw new IllegalArgumentException();
+		}
 		return operand1 % operand2 == 0;
 	}
 
@@ -152,6 +155,17 @@ public class Calculate {
 	}
 
 	/*
+	 * overload min for doubles
+	 */
+	public static double min(double operand1, double operand2) {
+		if (operand1 > operand2) {
+			return operand2;
+		} else {
+			return operand1;
+		}
+	}
+
+	/*
 	 * rounds a double correctly to 2 decimal places and returns a double.
 	 */
 	public static double round2(double operand1) {
@@ -169,7 +183,11 @@ public class Calculate {
 	 * raises a value to a positive integer power
 	 */
 	public static double exponent(double baseNum, int exponent) {
+		if (exponent < 0) {
+			throw new IllegalArgumentException();
+		}
 		double result = 1.0;
+
 		for (int i = 0; i < exponent; i++) {
 			result = result * baseNum;
 		}
@@ -180,11 +198,16 @@ public class Calculate {
 	 * returns the factorial of the value passed
 	 */
 	public static int factorial(int n) {
+		if (n < 0) {
+			throw new IllegalArgumentException();
+		}
 		int result = 1;
+
 		for (int i = 1; i <= n; i++) {
 			result = result * i;
 		}
 		return result;
+
 	}
 
 	/*
@@ -218,21 +241,32 @@ public class Calculate {
 	 */
 	public static double sqrt(double x) {
 		if (x < 0) {
-			throw new IllegalArgumentException ()
+			throw new IllegalArgumentException();
 		}
 		double a = x / 2.0;
+
 		while (absValue(x - a * a) > .005) {
 			a = 0.5 * (x / a + a);
 		}
 		return round2(a);
 	}
-	
+
 	/*
-	 * uses the coefficients of a quadratic equation in standard form and uses
-	 * the quadratic formula to approximate the real roots, if any.
+	 * uses the coefficients of a quadratic equation in standard form and uses the
+	 * quadratic formula to approximate the real roots, if any.
 	 */
 	public static String quadForm(int a, int b, int c) {
-		if (discriminant(a, b, c) < 0) {
-			
+		double disc = discriminant(a, b, c);
+		if (disc < 0) {
+			return "no real roots";
+		} else {
+			double root1 = (-b - sqrt(disc)) / (2 * a);
+			double root2 = (-b + sqrt(disc)) / (2 * a);
+			if (root1 == root2) {
+				return "" + round2(root1);
+			} else {
+				return round2(min(root1, root2)) + " and " + round2(max(root1, root2));
+			}
+		}
 	}
 }
