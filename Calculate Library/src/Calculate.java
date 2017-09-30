@@ -39,16 +39,16 @@ public class Calculate {
 	/*
 	 * This method converts an angle measure given in radians into degrees.
 	 */
-	public static double toDegrees(double operand) {
-		double deg = (operand * (180 / 3.14159));
+	public static double toDegrees(double angle) {
+		double deg = (angle * (180 / 3.14159));
 		return deg;
 	}
 
 	/*
 	 * This method converts an angle measure given its degrees into radians
 	 */
-	public static double toRadians(double operand) {
-		double rad = (operand * (3.14159 / 180));
+	public static double toRadians(double angle) {
+		double rad = (angle * (3.14159 / 180));
 		return rad;
 	}
 
@@ -84,11 +84,11 @@ public class Calculate {
 	 * This method converts a binomial multiplication of the form (ax + b)(cx + d)
 	 * into a quadratic equation of the form ax^2 + bx + c.
 	 */
-	public static String foil(int w, int x, int y, int z, String variableName) {
-		int a = (w * y);
-		int b = ((w * z) + (x * y));
-		int c = (x * z);
-		return a + variableName + "^2" + "+" + b + variableName + "+" + c;
+	public static String foil(int a, int b, int c, int d, String variableName) {
+		int outputA = (a * c);
+		int outputB = ((a * d) + (b * c));
+		int outputC = (b * d);
+		return outputA + variableName + "^2" + "+" + outputB + variableName + "+" + outputC;
 	}
 
 	/*
