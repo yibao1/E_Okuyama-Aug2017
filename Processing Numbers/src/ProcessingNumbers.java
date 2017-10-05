@@ -11,19 +11,19 @@ public class ProcessingNumbers {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("How many numbers do you want to add? ");
 		int totalNumber = scanner.nextInt();
-		int sum = 0;
+		int sumOfEvens = 0;
 		int min = 0;
 		int max = 0;
 		int maxEven = 0; 
-		boolean minSet = false;
-		boolean maxSet = false;
-		boolean maxEvenSet = false;
+		boolean minSet = false; //this will be used to make sure a minimum value has been set
+		boolean maxSet = false; //same but for maximum
+		boolean maxEvenSet = false; //same but for maximum even number
 		for (int i = 0; i < totalNumber; i++) {
 			System.out.print("#" + i + "? ");
 			int next = scanner.nextInt();
 					
 			if(next % 2 == 0) {
-				sum += next;
+				sumOfEvens += next;
 				if(!maxEvenSet || next > maxEven) {
 					maxEvenSet = true;
 					maxEven = next;
@@ -38,6 +38,9 @@ public class ProcessingNumbers {
 				max = next;
 			}
 		}
+		
+		//For min, max, and maxEven, we use the boolean "set" variables to print a 
+		//special message when the value has not been set
 		System.out.print("Smallest number = ");
 		if(minSet) {
 			System.out.println(min);
@@ -50,12 +53,13 @@ public class ProcessingNumbers {
 		} else {
 			System.out.println("No max value");
 		}
-		System.out.println("Sum of even numbers = " + sum);
+		System.out.println("Sum of even numbers = " + sumOfEvens);
 		System.out.print("Largest even number = ");
 		if(maxEvenSet) {
 			System.out.println(maxEven);
 		} else {
 			System.out.println("No max even value");
 		}
+		scanner.close();
 	}
 }
