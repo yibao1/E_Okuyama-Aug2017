@@ -6,14 +6,19 @@
  */
 import java.util.*;
 
-public class QuadraticDescriber {
+public class QuadraticClient {
 
-	public static String quadrDescriber(double a, double b, double c) {
+	public static void main(String args[]) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Provide values for a, b, and c");
+		System.out.println("Provide values for a, b, and c");
+		System.out.print("a: ");
 		double a = scanner.nextDouble();
+		System.out.print("b: ");
 		double b = scanner.nextDouble();
+		System.out.print("c: ");
 		double c = scanner.nextDouble();
+		quadrDescriber
+		
 				
 
 	}
