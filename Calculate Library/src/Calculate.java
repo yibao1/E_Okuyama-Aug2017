@@ -114,7 +114,7 @@ public class Calculate {
 	}
 
 	/*
-	 * returns the absolute value of the number passed.
+	 * returns the max value of the number passed.
 	 */
 	public static double max(double operand1, double operand2) {
 		if (operand1 > operand2) {
