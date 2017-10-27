@@ -1,3 +1,8 @@
+/*
+ * Emi Okuyama
+ * October 26th, 2017
+ */
+
 import java.util.Arrays;
 
 public class Split {
