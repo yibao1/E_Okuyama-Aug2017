@@ -59,7 +59,10 @@ public class Split {
 		System.out.println(Arrays.toString(splitSandwich("applespineapplesbreadlettustomatobaconmayohambreadcheese")));
 		System.out.println(Arrays.toString(splitSandwich("")));
 		System.out.println(Arrays.toString(splitSandwich("airbreadplate")));
+		System.out.println(Arrays.toString(splitSandwich("breadhambread")));
 		System.out.println("task2:");
+		System.out.println(
+				splitSandwichWithSpaces("bread ham bread"));
 		System.out
 				.println(splitSandwichWithSpaces("apples pineapples bread lettus tomato bacon mayo ham bread cheese"));
 		System.out.println(
