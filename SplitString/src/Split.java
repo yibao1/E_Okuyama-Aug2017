@@ -14,13 +14,25 @@ public class Split {
 	 * What if it's a fancy sandwich with multiple pieces of bread?
 	 */
 	public static String[] splitSandwich(String ingredients) {
+		if (ingredients.indexOf("bread") == ingredients.lastIndexOf("bread")) { 
+			String[] result = {};
+			return result;
+		}
 		String[] parts = ingredients.split("bread");
+		System.out.println("###" + ingredients + ":" + Arrays.toString(parts));
 		if (parts.length <= 1) {
 			String[] result = {};
 			return result;
 		}
-		return Arrays.copyOfRange(parts, 1, parts.length - 1);
 
+// if the string contains ingredients after the final bread then we need to remove them.  
+		int endOfParts;
+		if (ingredients.endsWith("bread")) {
+			endOfParts = parts.length;
+		} else {
+			endOfParts = parts.length - 1;
+		}			
+		return Arrays.copyOfRange(parts, 1, endOfParts);
 	}
 
 	/*
@@ -56,10 +68,12 @@ public class Split {
 	public static void main(String[] args) {
 		System.out.println("task1:");
 		System.out.println(Arrays.toString(splitSandwich("airbreadcheesebreadmeatbreadplate")));
+		System.out.println(Arrays.toString(splitSandwich("airbreadcheesebreadmeatbreadplatetable")));
 		System.out.println(Arrays.toString(splitSandwich("applespineapplesbreadlettustomatobaconmayohambreadcheese")));
 		System.out.println(Arrays.toString(splitSandwich("")));
 		System.out.println(Arrays.toString(splitSandwich("airbreadplate")));
 		System.out.println(Arrays.toString(splitSandwich("breadhambread")));
+		System.out.println(Arrays.toString(splitSandwich("breadbread")));
 		System.out.println("task2:");
 		System.out.println(
 				splitSandwichWithSpaces("bread ham bread"));
@@ -67,7 +81,12 @@ public class Split {
 				.println(splitSandwichWithSpaces("apples pineapples bread lettus tomato bacon mayo ham bread cheese"));
 		System.out.println(
 				splitSandwichWithSpaces("apples pineapples bread lettus tomato bread bacon mayo ham bread cheese"));
-		
+		System.out.println(
+				splitSandwichWithSpaces("bread bread"));
+		System.out.println(
+				splitSandwichWithSpaces(""));
+		System.out.println(
+				splitSandwichWithSpaces("bread ham"));
 	}
 
 }
