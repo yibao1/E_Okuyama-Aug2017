@@ -53,6 +53,7 @@ public class Split {
 		String result = "";
 		int firstBread = -1;
 		int lastBread = -1;
+		// find where the first bread is and where the last bread is
 		for (int i = 0; i < parts.length; i++) {
 			if (parts[i].equals("bread")) {
 				if (firstBread == -1) {
@@ -62,6 +63,7 @@ public class Split {
 				}
 			}
 		}
+		// print out ingredients
 		for (int j = firstBread + 1; j < lastBread; j++) {
 			if (!parts[j].equals("bread")) {
 				result += parts[j] + " ";
