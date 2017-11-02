@@ -1,7 +1,7 @@
 
 public class ArraysLab3 {
 	public static void main(String[] args) {
-		sum ar1[] = 
+		int arr1[] = new int[];
 		System.out.println(ArraysLab3.sum(arr1, arr2));
 	}
 
