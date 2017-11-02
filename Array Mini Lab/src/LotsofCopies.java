@@ -1,3 +1,8 @@
+/*
+ * Emi Okuyama
+ * November 1st, 2017
+ * Arrays Mini Lab
+ */
 import java.util.Arrays;
 
 public class LotsofCopies {
