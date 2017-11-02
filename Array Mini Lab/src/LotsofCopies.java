@@ -13,7 +13,7 @@ public class LotsofCopies {
 
 		/*
 		 * When I passed something into changeMe and then changed the value inside
-		 * changeMe the value did not change in the main part of my program.
+		 * changeMe the value did not change in the main part of my program unless it was an array.
 		 */
 
 		System.out.println("== part 1 ==");
@@ -29,7 +29,7 @@ public class LotsofCopies {
 
 		/*
 		 * When I set one variable to equal another and then change the original
-		 * variable to something else, the second variable stays the same.
+		 * variable to something else, the second variable stays the same unless its an array.
 		 */
 
 		System.out.println("\n== part 2 ==");
@@ -46,7 +46,9 @@ public class LotsofCopies {
 		System.out.println("after: ");
 		aInt = 2;
 		aString = "bar";
-		aArray = new int[] { 6, 7, 8, 9, 10 };
+		for (int i = 0; i < aArray.length; i++) {
+		aArray[i]++;
+		}
 		System.out.println(bInt);
 		System.out.println(bString);
 		System.out.println(Arrays.toString(bArray));
@@ -55,7 +57,9 @@ public class LotsofCopies {
 	public static void changeMe(int x, String str, int[] arr) {
 		x = 1;
 		str = "hi";
-		arr = new int[] { 6, 7, 8, 9, 10 };
+		for (int i = 0; i < arr.length; i++) {
+		arr[i] ++;
+	}
 		System.out.println("inside changeMe: ");
 		System.out.println(x);
 		System.out.println(str);
