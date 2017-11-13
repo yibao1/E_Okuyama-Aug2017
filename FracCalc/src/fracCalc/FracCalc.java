@@ -1,10 +1,24 @@
 package fracCalc;
 
+import java.util.Scanner;
+
 public class FracCalc {
 
     public static void main(String[] args) 
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
+    		Scanner scanner1 = new Scanner(System.in);
+    		boolean done = false;
+    		while(!done) {
+    			System.out.print("Type two mixed fractions");	
+    			String fractions = scanner1.next();
+    			System.out.println(produceAnswer(fractions));
+    			System.out.println("are you done? type yes or no");
+    			String finished = scanner1.next();
+    			if(finished.equals("yes")) {
+    				done = true;
+    			}
+    		}
 
     }
     
@@ -19,8 +33,9 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
-        
-        return "";
+    	String[] fracArr = input.split(" ");
+		String op2 = fracArr[2];
+		return op2;  
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
