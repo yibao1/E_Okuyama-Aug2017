@@ -35,7 +35,20 @@ public class FracCalc {
         // TODO: Implement this function to produce the solution to the input
     	String[] fracArr = input.split(" ");
 		String op2 = fracArr[2];
-		return op2;  
+		int whole = 0;
+		int num = 0;
+		int denom = 1;
+		for (int i = 0; i < op2.length(); i++) {
+			
+		}
+		String[] mixedNum = op2.split("_");
+		whole = Integer.parseInt(mixedNum[0]);
+		String fraction = mixedNum[1];
+		String[] fraction1 = fraction.split("/");
+		num = Integer.parseInt(fraction1[0]);
+		denom = Integer.parseInt(fraction1[1]);
+		return "whole:" + whole + " numerator:" + num + " denominator:" + denom;  
+		
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
