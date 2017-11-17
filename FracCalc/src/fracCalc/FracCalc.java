@@ -35,27 +35,20 @@ public class FracCalc {
 	public static String produceAnswer(String input) {
 		// TODO: Implement this function to produce the solution to the input
 		String[] fracArr = input.split(" ");
-		String[] op2 = { fracArr[2] };
+		String first =  fracArr[2] ;
 		int whole = 0;
 		int num = 0;
 		int denom = 1;
-		for (int i = 0; i < op2.length; i++) {
-			if (op2[i] == "_") {
-				String[] mixedNum = fracArr[2].split("_");
-				whole = Integer.parseInt(mixedNum[0]);
-				String[] fraction1 = mixedNum[1].split("/");
-				num = Integer.parseInt(fraction1[0]);
-				denom = Integer.parseInt(fraction1[1]);
-			} else if (op2[i] == "/") {
-				String[] fraction1 = fracArr[2].split("/");
-				num = Integer.parseInt(fraction1[0]);
-				denom = Integer.parseInt(fraction1[1]);
-			} 
-		else {
-				whole = Integer.parseInt(fracArr[2]);
+		  if (first.indexOf('_') >= 0) {
+			whole = Integer.parseInt(first.substring(0, first.indexOf('_')));
+			        	num = Integer.parseInt(first.substring(first.indexOf('_') + 1, first.indexOf('/')));
+			         	denom = Integer.parseInt(first.substring(first.indexOf('/') + 1));
+			         } else if (first.indexOf('/') >= 0) {
+			         	num = Integer.parseInt(first.substring(0, first.indexOf('/')));
+			         	denom = Integer.parseInt(first.substring(first.indexOf('/') + 1));
+			         } else {
+			         	whole = Integer.parseInt(first);
 			}
-		}
-
 		return "whole:" + whole + " numerator:" + num + " denominator:" + denom;
 
 	}
