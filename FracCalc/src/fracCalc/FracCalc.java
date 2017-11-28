@@ -36,11 +36,11 @@ public class FracCalc {
 														
 		int[] opernums1 = new int[3];
 		for (int i = 0; i < split1.length; i++) {
-			opernums1[i] = toNumber(split1[i]);
+			opernums1[i] = toInt(split1[i]);
 		}
 		int[] opernums2 = new int[3];
 		for (int i = 0; i < split2.length; i++) {
-			opernums2[i] = toNumber(split2[i]);
+			opernums2[i] = toInt(split2[i]);
 		} 
 		int[] operand1 = new int[2];
 		int[] operand2 = new int[2];
@@ -61,17 +61,17 @@ public class FracCalc {
 	}
 
 	// TODO: Implement this function to produce the solution to the input
-	public static int toNumber(String numberstr) {
-		int negsign = 1;
+	public static int toInt(String numberstr) {
+		int neg = 1;
 		if (numberstr.contains("-")) {
 			numberstr = numberstr.substring(1);
-			negsign = -1;
+			neg = -1;
 		}
 		int i = 0;
 		while (i >= 0) {
 			String j = "" + i;
 			if (numberstr.equals(j)) {
-				return i * negsign;
+				return i * neg;
 			}
 			i++;
 		}
@@ -91,26 +91,26 @@ public class FracCalc {
 	}
 
 	public static String[] splitOperand(String operand) {
-		String wholenum = "0";
-		String numerator = "0";
-		String denominator = "1";
+		String whole = "0";
+		String num = "0";
+		String denom = "1";
 		String[] fraction = operand.split("_");
-		wholenum = fraction[0];
+		whole = fraction[0];
 		String fracofmxnum = "";
 		if (fraction.length == 2) {
 			fracofmxnum = fraction[1];
 			fracofmxnum.split("/");
-			numerator = fracofmxnum.split("/")[0];
-			denominator = fracofmxnum.split("/")[1];
-		} else if (wholenum.contains("/")) {
-			numerator = wholenum.split("/")[0];
-			denominator = wholenum.split("/")[1];
-			wholenum = "0";
+			num = fracofmxnum.split("/")[0];
+			denom = fracofmxnum.split("/")[1];
+		} else if (whole.contains("/")) {
+			num = whole.split("/")[0];
+			denom = whole.split("/")[1];
+			whole = "0";
 		}
 		String[] splitted = new String[3];
-		splitted[0] = wholenum;
-		splitted[1] = numerator;
-		splitted[2] = denominator;
+		splitted[0] = whole;
+		splitted[1] = num;
+		splitted[2] = denom;
 		return splitted;
 	}
 
