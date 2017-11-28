@@ -33,7 +33,7 @@ public class FracCalc {
 		String secondoperand = inputarray[2];
 		String[] split1 = splitOperand(firstoperand);
 		String[] split2 = splitOperand(secondoperand); 
-														\
+														
 		int[] opernums1 = new int[3];
 		for (int i = 0; i < split1.length; i++) {
 			opernums1[i] = toNumber(split1[i]);
