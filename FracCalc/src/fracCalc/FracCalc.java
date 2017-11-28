@@ -6,6 +6,7 @@ public class FracCalc {
 
 	public static void main(String[] args) {
 		// TODO: Read the input from the user and call produceAnswer with an equation
+
 		do {
 			Scanner console = new Scanner(System.in);
 			String input = console.nextLine();
@@ -14,6 +15,7 @@ public class FracCalc {
 			System.out.println(produceAnswer(input));
 		} while (true);
 	}
+
 
 	// ** IMPORTANT ** DO NOT DELETE THIS FUNCTION. This function will be used to
 	// test your code
@@ -48,6 +50,7 @@ public class FracCalc {
 		operand1 = toImproperFrac(opernums1);
 		operand2 = toImproperFrac(opernums2);
 		int[] answer = new int[2];
+
 
 		if (operator.equals("+") || operator.equals("-")) {
 			addOrsubtract(operand1, operand2, answer, operator);
@@ -143,6 +146,7 @@ public class FracCalc {
 		answer[0] = arr1[0] * arr2[0];
 		answer[1] = arr1[1] * arr2[1];
 	}
+
 }
 	
 	
