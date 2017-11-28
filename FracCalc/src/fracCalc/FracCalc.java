@@ -55,5 +55,37 @@ public class FracCalc {
 
 	// TODO: Fill in the space below with any helper methods that you think you will
 	// need
+	
+
+	public static String toImproperFrac(int number, int numerator, int denominator) {
+		int mixedNumerator = (number * denominator + numerator);
+		return mixedNumerator + "/" + denominator;
+
+	}
+	
+	public static boolean isDivisibleBy(int operand1, int operand2) {
+		if (operand2 == 0) {
+			throw new IllegalArgumentException();
+		}
+		return operand1 % operand2 == 0;
+	}
+	
+	public static int min(int operand1, int operand2) {
+		if (operand1 > operand2) {
+			return operand2;
+		} else {
+			return operand1;
+		}
+	}
+	
+	public static int gcd(int denom1, int denom2) {
+		int result = 1;
+		for (int i = 1; i <= min(denom1, denom2); i++) {
+			if (isDivisibleBy(denom1, i) && isDivisibleBy(denom2, i)) {
+				result = i;
+			}
+		}
+		return result;
+	}
 
 }
