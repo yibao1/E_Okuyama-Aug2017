@@ -97,6 +97,7 @@ public class FracCalc {
 		return whole + "_" + num + "/" + denom;
 	}
 
+
 	// TODO: Implement this function to produce the solution to the input
 	public static int[] splitString(String input) {
 		int whole = 0;
@@ -146,6 +147,8 @@ public class FracCalc {
 				result = i;
 			}
 		}
+
 		return result;
+
 	}
 }
