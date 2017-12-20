@@ -52,9 +52,18 @@ public class FracCalc {
 		num /= factor;
 		denom /= factor;
 
+		// when both the whole part and numerator part are negative we only need to
+		// return the whole as negative
+		if (whole < 0 && num < 0) {
+			num *= -1;
+		}
+
 		// if there is no fractional part just return the whole part
 		if (num == 0) {
 			return "" + whole;
+		}
+		if (whole == 0) {
+			return num + "/" + denom;
 		}
 		return whole + "_" + num + "/" + denom;
 	}
@@ -105,6 +114,10 @@ public class FracCalc {
 			int temp = denom2;
 			denom2 = num2;
 			num2 = temp;
+			if (denom2 < 0) {
+				num2 *= -1;
+				denom2 *= -1;
+			}
 		}
 
 		// when a whole number is negative transfer the sign to the numerator
@@ -135,12 +148,6 @@ public class FracCalc {
 			num = toImproperFracNumerator(whole1, num1, denom1) * toImproperFracNumerator(whole2, num2, denom2);
 			whole = num / denom;
 			num = num % denom;
-		}
-
-		// when both the whole part and numerator part are negative we only need to
-		// return the whole as negative
-		if (whole < 0 && num < 0) {
-			num *= -1;
 		}
 
 		int[] result = { whole, num, denom };
@@ -177,9 +184,17 @@ public class FracCalc {
 		return result;
 	}
 
+	public static double absValue(double operand1) {
+		if (operand1 > 0) {
+			return operand1;
+		} else {
+			return operand1 * -1;
+		}
+	}
+
 	public static int gcf(int x, int y) {
 		int result = 1;
-		for (int i = 1; i <= min(x, y); i++) {
+		for (int i = 1; i <= absValue(min(x, y)); i++) {
 			if (isDivisibleBy(x, i) && isDivisibleBy(y, i)) {
 				result = i;
 			}
