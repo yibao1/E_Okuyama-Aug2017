@@ -42,6 +42,7 @@ public class FracCalc {
 		int[] op2Arr = splitString(op2);
 		int whole1 = op1Arr[0], num1 = op1Arr[1], denom1 = op1Arr[2];
 		int whole2 = op2Arr[0], num2 = op2Arr[1], denom2 = op2Arr[2];
+				
 		int[] result = handleOperation(oper, whole1, num1, denom1, whole2, num2, denom2);
 		int whole = result[0], num = result[1], denom = result[2];
 
@@ -128,10 +129,15 @@ public class FracCalc {
 			num2 *= -1;
 		}
 
-		// we only impliment two operations + and *
+		// add the whole part to the numerator so we only need to add the two fractions
+		num1 += whole1 * denom1;
+		num2 += whole2 * denom2;
+		whole1 = 0;
+		whole2 = 0;
+				
+		// we only implement two operations + and *
 		if (oper.equals("+")) {
-			whole = whole1 + whole2;
-			denom = lcd(denom1, denom2);
+			denom = denom1 * denom2;
 			num = 0;
 			if (denom1 != denom) {
 				num += num1 * (denom / denom1);

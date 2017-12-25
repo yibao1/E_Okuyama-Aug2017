@@ -30,9 +30,11 @@ public class FracCalc {
 		int[] op2Arr = splitString(op2);
 		int whole1 = op1Arr[0], num1 = op1Arr[1], denom1 = op1Arr[2];
 		int whole2 = op2Arr[0], num2 = op2Arr[1], denom2 = op2Arr[2];
-		Fraction x = new Fraction(whole2, num2, denom2);
-		x.toMixedNumber();
-		return x.toString();
+		Fraction f1 = new Fraction(whole1, num1, denom1);
+		Fraction f2 = new Fraction(whole2, num2, denom2);
+		Fraction f3 = f1.handleOperation(oper, f2);
+		f3.toMixedNumber();
+		return f3.toString();
 	}
 
 	public static int[] splitString(String input) {
