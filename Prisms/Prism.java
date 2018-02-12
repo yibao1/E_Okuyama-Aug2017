@@ -10,54 +10,26 @@
  */
 
 
-public class Prism  
+public abstract class Prism  
 {
-	protected double height;
-	protected double perimeter;
-	protected double base;
+	private double height;
 	
 	public Prism(double height) {
 		this.height = height;
 	}
 	
-	public double calcAreaOfBase() {
-		double bas = round2(base);
-		return bas;
+	public double getHeight() {
+		return height;
 	}
-	
-	public double calcPerimeter() {
-		double peri = round2(perimeter);
-		return peri;
-	}
-	
-	public double calcVolume() {
-		double vol = base * height;
-		vol = round2(vol);
-		return vol;
+	public abstract double calcAreaOfBase(); 
+	public abstract double calcPerimeter();
+	public double calcVolume() { 
+		return calcAreaOfBase() * height;
 	}
 	
 	public double calcSA() {
-		double sa = perimeter * height;
-		sa = sa + base + base;
-		sa = round2(sa);
-		return sa;
+		return (calcPerimeter() * height) + 2*(calcAreaOfBase());
 	}
-	private static double round2(double operand) {
-		double one = Math.abs((int)(operand * 100));//absolute value of input*100 which includes two decimal place values
-		double round2 = Math.abs(operand);//absolute value of the input 
-		if (100*round2-one >=0.5) {//if greater than 0.5, it means the 3rd decimal would be rounded up
-			round2 = (int) (round2 * 100 + 1);
-			round2 = round2/100;
-		} else {
-			round2 = (int) (round2 * 100);
-			round2 = round2/100;
-		}
-		if (operand<=0){
-			round2 = round2 * -1;//if the input was negative, convert the round2 to negative value
-		}
-		return round2;
-	}	
-	
 	
 }
 	
