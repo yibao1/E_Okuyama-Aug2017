@@ -10,9 +10,25 @@
  */
 
 
-public class TriangularPrism 
+public class TriangularPrism extends Prism
 {
+	private double sideA;
+	private double sideB;
+	private double sideC;
 	
+	public TriangularPrism(double sideA, double sideB, double height) {
+		super(height);
+	}
+	
+	public double calcAreaOfBase() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double calcPerimeter() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	
