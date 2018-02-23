@@ -16,18 +16,19 @@ public class TriangularPrism extends Prism
 	private double sideB;
 	private double sideC;
 	
-	public TriangularPrism(double sideA, double sideB, double height) {
+	public TriangularPrism(double sideA, double sideB, double sideC, double height) {
 		super(height);
+		this.sideA=sideA;
+		this.sideB=sideB;
+		this.sideC=sideC;
 	}
 	
 	public double calcAreaOfBase() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sideA * sideB * 0.5;
 	}
-	@Override
+
 	public double calcPerimeter() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sideA + sideB + sideC;
 	}
 	
 	
