@@ -8,7 +8,6 @@ public class TextCell implements Cell{
 		return "\"" + text + "\"";
 	}
 
-	@Override
 	public String abbreviatedCellText() {
 		String newText = text;
 		while (newText.length() < 10) {

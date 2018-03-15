@@ -24,7 +24,7 @@ public class Spreadsheet implements Grid {
 	}
 
 	public String getGridText() {
-		return null;
+		return ;
 	}
 
 }
