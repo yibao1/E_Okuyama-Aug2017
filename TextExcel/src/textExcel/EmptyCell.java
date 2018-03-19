@@ -1,6 +1,6 @@
 package textExcel;
 
-public class EmptyCell {
+public class EmptyCell implements Cell {
 	public String abbreviatedCellText() {
 		return "          ";
 	}
