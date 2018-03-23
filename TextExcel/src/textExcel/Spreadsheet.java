@@ -6,15 +6,25 @@ public class Spreadsheet implements Grid {
 	private Cell[][] cells;
 	public Spreadsheet() {
 		cells = new Cell[getRows()][getCols()];
-		for(int i = 0; i < getRows(); i++) {
-			for(int j = 0; j < getCols(); j++) {
-				cells[i][j] = new EmptyCell();
-			}
-		}
+		clear();
 	}
-
+	
 	public String processCommand(String command) {
-		return "";
+		String lCommand = command.toLowerCase();
+		if(lCommand.equals("clear")) {
+			clear();
+		} else if(lCommand.startsWith("clear")) {
+			SpreadsheetLocation loc = new SpreadsheetLocation(command.split(" ")[1]);
+			cells[loc.getRow()][loc.getCol()] = new EmptyCell();
+		} else if(command.contains("=")) {
+			String[] parts = command.split(" ", 3);
+			SpreadsheetLocation loc = new SpreadsheetLocation(parts[0]);
+			cells[loc.getRow()][loc.getCol()] = new TextCell(parts[2].substring(1, parts[2].length() - 1));
+		} else {
+			SpreadsheetLocation loc = new SpreadsheetLocation(command);
+			return cells[loc.getRow()][loc.getCol()].fullCellText();
+		}
+		return getGridText();
 	}
 
 	public int getRows() {
@@ -26,15 +36,37 @@ public class Spreadsheet implements Grid {
 	}
 
 	public Cell getCell(Location loc) {
-		Cell c = new EmptyCell();
-		return c; 
+		return this.cells[loc.getRow()][loc.getCol()];
 	}
 
 	public String getGridText() {
-		return "foo";
+		String output = "   |";
+		String padding;
+		for(int i = 0; i < getCols(); i++) {
+			output += (char)(i + (int)'A') + "         |";
+		}
+		output += "\n";
+		for(int i = 0; i < getRows(); i++) {
+			if(i < 9) {
+				padding = "  ";
+			} else {
+				padding = " ";
+			}
+			output += (i + 1) + padding + "|";
+			for(int j = 0; j < getCols(); j++) {
+				output += cells[i][j].abbreviatedCellText() + "|";
+			}
+			output += "\n";
+		}
+		return output;
 	}
 
-	private void reset() {
+	private void clear() {
+		for(int i = 0; i < getRows(); i++) {
+			for(int j = 0; j < getCols(); j++) {
+				cells[i][j] = new EmptyCell();
+			}
+		}
 	}
 
 }
