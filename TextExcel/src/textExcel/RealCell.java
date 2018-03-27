@@ -1,14 +1,14 @@
 package textExcel;
 
 public class RealCell implements Cell {
-private String text;
-	
+	private String text;
+
 	public RealCell(String text) {
 		this.setText(text);
 	}
-	
+
 	// text for individual cell inspection, not truncated or padded
-	public String fullCellText(){
+	public String fullCellText() {
 		return getText();
 	}
 
@@ -16,12 +16,12 @@ private String text;
 	public String abbreviatedCellText() {
 		String spaces = "          ";
 		String out = "" + getDoubleValue();
-		if(out.length() < 10) {
+		if (out.length() < 10) {
 			return out + spaces.substring(0, 10 - out.length());
 		}
 		return out.substring(0, 10);
 	}
-	
+
 	public double getDoubleValue() {
 		return Double.parseDouble(getText());
 	}
