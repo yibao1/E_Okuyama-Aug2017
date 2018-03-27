@@ -21,7 +21,8 @@ public class RealCell implements Cell {
 		}
 		return out.substring(0, 10);
 	}
-
+	
+	//returns the calculated value of the cell as a double (not a String).
 	public double getDoubleValue() {
 		return Double.parseDouble(getText());
 	}

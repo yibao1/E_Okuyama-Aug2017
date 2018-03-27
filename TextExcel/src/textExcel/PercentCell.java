@@ -14,7 +14,11 @@ public class PercentCell extends RealCell {
 	// text for spreadsheet cell display, must be exactly length 10
 	public String abbreviatedCellText() {
 		String spaces = "          ";
+		
+		//truncates the number
 		String out = "" + (int) (getDoubleValue() * 100);
+		
+		//adds spaces
 		if (out.length() < 9) {
 			out += "%" + spaces.substring(0, 9 - out.length());
 		} else {
@@ -23,6 +27,7 @@ public class PercentCell extends RealCell {
 		return out;
 	}
 
+	//returns the calculated value of the cell as a double (not a String).
 	public double getDoubleValue() {
 		return Double.parseDouble(getText()) / 100;
 	}
