@@ -32,7 +32,7 @@ public class Spreadsheet implements Grid {
 				cells[loc.getRow()][loc.getCol()] = new PercentCell(parts[2].substring(0, parts[2].length() - 1));
 			
 			//Real value assignment (e.g. A1 = 5.2, or A1 = (A2 + A3 * 4),
-			} else if (isNumeric(parts[2])){
+			} else if (!parts[2].endsWith("\"")){
 				cells[loc.getRow()][loc.getCol()] = new ValueCell(parts[2]);
 			
 			} else if (parts[2].endsWith("\"")){
@@ -101,15 +101,5 @@ public class Spreadsheet implements Grid {
 				cells[i][j] = new EmptyCell();
 			}
 		}
-	}
-
-	//checks if string is numeric
-	private static boolean isNumeric(String str) { 
-		for (char c : str.toCharArray()) {
-			if (!(Character.isDigit(c) || c == '.')) {
-				return false;
-			}
-		}
-		return true;
 	}
 }
