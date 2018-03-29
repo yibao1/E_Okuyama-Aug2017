@@ -13,32 +13,28 @@ public class Spreadsheet implements Grid {
 	public String processCommand(String command) {
 		String lCommand = command.toLowerCase();
 		
-		//clearing the entire sheet (e.g., clear).
+		
 		if (lCommand.equals("clear")) {
+			//clearing the entire sheet (e.g., clear).
 			clear();
-	
-		//clearing a particular cell (e.g., clear A1).
 		} else if (lCommand.startsWith("clear")) {
+			//clearing a particular cell (e.g., clear A1).
 			SpreadsheetLocation loc = new SpreadsheetLocation(command.split(" ")[1]);
 			cells[loc.getRow()][loc.getCol()] = new EmptyCell();
-		
-		//assignment of string values (e.g., A1 = “Hello”).
 		} else if (command.contains("=")) {
+			//assignment of string values (e.g., A1 = "Hello").
 			String[] parts = command.split(" ", 3);
 			SpreadsheetLocation loc = new SpreadsheetLocation(parts[0]);
-			
-			//Percent assignment (e.g. A1 = 5.2%)
 			if (parts[2].endsWith("%")) {
+				//Percent assignment (e.g. A1 = 5.2%)
 				cells[loc.getRow()][loc.getCol()] = new PercentCell(parts[2].substring(0, parts[2].length() - 1));
-			
-			//Real value assignment (e.g. A1 = 5.2, or A1 = (A2 + A3 * 4),
-			} else if (!parts[2].endsWith("\"")){
-				cells[loc.getRow()][loc.getCol()] = new ValueCell(parts[2]);
-			
+			} else if (parts[2].endsWith(")")){
+				cells[loc.getRow()][loc.getCol()] = new FormulaCell(parts[2]);
 			} else if (parts[2].endsWith("\"")){
 				cells[loc.getRow()][loc.getCol()] = new TextCell(parts[2].substring(1, parts[2].length() - 1));
 			} else {
-				cells[loc.getRow()][loc.getCol()] = new FormulaCell(parts[2]);
+				//Real value assignment (e.g. A1 = 5.2)
+				cells[loc.getRow()][loc.getCol()] = new ValueCell(parts[2]);
 			}
 		
 		//cell inspection (e.g., A1)
