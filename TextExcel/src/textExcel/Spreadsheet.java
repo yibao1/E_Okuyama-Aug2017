@@ -34,7 +34,7 @@ public class Spreadsheet implements Grid {
 				// Percent assignment (e.g. A1 = 5.2%)
 				cells[r][c] = new PercentCell(rhs.substring(0, rhs.length() - 1));
 			} else if (rhs.endsWith(")")) {
-				cells[r][c] = new FormulaCell(rhs);
+				cells[r][c] = new FormulaCell(rhs, this);
 			} else if (rhs.endsWith("\"")) {
 				cells[r][c] = new TextCell(rhs.substring(1, rhs.length() - 1));
 			} else {
@@ -60,7 +60,11 @@ public class Spreadsheet implements Grid {
 	public Cell getCell(Location loc) {
 		return this.cells[loc.getRow()][loc.getCol()];
 	}
-
+	
+	public Cell getCell(int i, int j) {
+		return this.cells[i][j];
+	}
+	
 	// Return a single String containing the entire spreadsheet grid.
 	public String getGridText() {
 		String output = "   |";
