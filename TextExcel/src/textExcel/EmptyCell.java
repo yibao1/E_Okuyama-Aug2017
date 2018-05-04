@@ -10,4 +10,8 @@ public class EmptyCell implements Cell {
 	public String fullCellText() {
 		return "";
 	}
+
+	public double getDoubleValue() {
+		return 0;
+	}
 }

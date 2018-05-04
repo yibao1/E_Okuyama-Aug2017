@@ -21,4 +21,9 @@ public class TextCell implements Cell{
 		}
 		return text.substring(0, 10);
 	}
+
+
+	public double getDoubleValue() {
+		return 0;
+	}
 }
